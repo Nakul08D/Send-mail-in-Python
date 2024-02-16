@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block body %}
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div class="cont">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://source.unsplash.com/1600x400/?mobile,contact" class="d-block w-100" alt="img">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-2">
+    <p>
+    <h2 class="text-center">Contact Us</h2>
+    </p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 m-auto">
+            <form action="{% url 'contact_info'%}" method="post">{% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-label">Mobile Number:</label>
+                    <input type="number" class="form-control" id="number" name="number">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Write Your Issue?</label>
+                    <textarea class="form-control" id="message" name="message"
+                        placeholder="Fill free to write yours issue..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mb-1">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
